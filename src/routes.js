@@ -5,6 +5,7 @@ import {
     App,
     Chat,
     Home,
+    Dashboard,
     Widgets,
     About,
     Login,
@@ -37,16 +38,18 @@ export default (store) => {
   return (
     <Route path="/" component={App}>
       { /* Home (main) route */ }
-      <IndexRoute component={Home}/>
+      <IndexRoute component={Login}/>
 
       { /* Routes requiring login */ }
       <Route onEnter={requireLogin}>
+        <Route path="dashboard" component={Dashboard}/>
         <Route path="chat" component={Chat}/>
         <Route path="loginSuccess" component={LoginSuccess}/>
+        <Route path="about" component={About}/>
       </Route>
 
       { /* Routes */ }
-      <Route path="about" component={About}/>
+      <Route path="home" component={Home}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
       <Route path="widgets" component={Widgets}/>
